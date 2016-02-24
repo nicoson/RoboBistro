@@ -1,0 +1,51 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 14px;
+}
+body {
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-image: url("../images/bg1.jpg");
+	background-position: center center;
+}
+
+h1.P1_title {
+	color: white;
+	font-size: 5rem;
+	text-align: center;
+	margin-top: 4rem;
+	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+}
+
+.P1_button_entrance {
+	width: 100%;
+	margin-top: 3rem;
+	padding: 1rem 0 1rem 0;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 4rem black;
+	background: rgba(0,0,0,0.7);
+}
+
+.P1_button_entrance p {
+	font-size: 2rem;
+	text-align: center;
+	color: white;
+	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+	-moz-user-select:none;/*火狐*/
+	-webkit-user-select:none;/*webkit浏览器*/
+	-ms-user-select:none;/*IE10*/
+	user-select:none;
+	cursor: pointer;
+}
+
+.P2_img_frame img{
+	width: 200px;
+	height: 300px;
+}
+
+/*div {
+	border: 1px dashed black;
+}*/
