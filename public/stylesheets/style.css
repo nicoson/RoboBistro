@@ -12,6 +12,15 @@ body {
 	background-position: center center;
 }
 
+.container {
+	width: 300px;
+	margin: 10px auto;
+}
+
+#rb_qrCode {
+	margin: 10px auto;
+}
+
 h1.P1_title {
 	color: white;
 	font-size: 5rem;

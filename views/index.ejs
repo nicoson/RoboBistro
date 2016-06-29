@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- These meta tags come first. -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>RoboBistro homepage</title>
+
+	<!-- Include the CSS -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container">
+		<h1 class="P1_title">Ping++ Alipay test</h1>
+
+		<div class="container">
+			<label>cash</label>
+			<input id="amount" type="text" />
+			<button id="submitOrder">submit</button>
+		</div>
+
+		<div id="rb_qrCode"></div>
+	</div>
+	
+
+	<!-- Include jQuery (required) and the JS -->
+	<script src="/javascripts/jquery-2.2.1.min.js"></script>
+	<script src="/javascripts/jquery.qrcode.min.js"></script>
+	<script src="/javascripts/qrcode.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#submitOrder").on("click", function(){
+				$.ajax({
+					url: "/alipayOrderCreate",
+					method: "POST",
+					data: {
+						amount: $("#amount").val()*100
+					}
+				}).done(function(data){
+					console.log(data);
+					$("#rb_qrCode").qrcode({width: 200,height: 200, text: data.credential.alipay_qr});
+					setTimeout(function(){alipayOrderQuery(data.id)}, 3000);
+				});
+			});
+
+			function alipayOrderQuery(id){
+				$.ajax({
+					url: "/alipayOrderQuery",
+					method: "POST",
+					data: {
+						id: id
+					}
+				}).done(function(data){
+					console.log(data);
+					if(data.paid){
+						alert("paid success!");
+					}else{
+						setTimeout(function(){return alipayOrderQuery(id);}, 1000);
+					}
+				});
+			}
+		});
+	</script>
+</body>
+</html>
