@@ -1,60 +1,85 @@
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
-html {
-	font-size: 14px;
+html,
+body {
+  height: 100%;
+  font-size: 14px;
 }
 body {
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	background-image: url("../images/bg1.jpg");
-	background-position: center center;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.rb-alignment-middle:before {
+  content: "a";
+  display: inline-block;
+  height: 100%;
+}
+h1 {
+  padding: 20px 0;
+  text-align: center;
+}
+#rb_start {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+#rb_start p {
+  font-size: 80px;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+#rb_productList tr th {
+  text-align: center;
+  border-bottom: 1px solid grey;
+}
+#rb_productList tr td {
+  border-bottom: 1px solid grey;
+  text-align: right;
+}
+#rb_productList tr td img {
+  width: 200px;
+}
+#rb_amountSum {
+  float: right;
+}
+.rb_submit {
+  clear: both;
+  float: right;
+  margin-top: 30px;
+}
 .container {
-	width: 300px;
-	margin: 10px auto;
+  width: 300px;
+  margin: 10px auto;
 }
-
 #rb_qrCode {
-	margin: 10px auto;
+  margin: 10px auto;
 }
-
-h1.P1_title {
-	color: white;
-	font-size: 5rem;
-	text-align: center;
-	margin-top: 4rem;
-	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+#rb_qrCode canvas {
+  margin: 30px auto;
+  display: block;
 }
-
-.P1_button_entrance {
-	width: 100%;
-	margin-top: 3rem;
-	padding: 1rem 0 1rem 0;
-	border-radius: 0.5rem;
-	box-shadow: 0 0 4rem black;
-	background: rgba(0,0,0,0.7);
+.rb-alipayModal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
 }
-
-.P1_button_entrance p {
-	font-size: 2rem;
-	text-align: center;
-	color: white;
-	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
-	-moz-user-select:none;/*火狐*/
-	-webkit-user-select:none;/*webkit浏览器*/
-	-ms-user-select:none;/*IE10*/
-	user-select:none;
-	cursor: pointer;
+.rb-alipayModal > div {
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background: white;
+  position: absolute;
 }
-
-.P2_img_frame img{
-	width: 200px;
-	height: 300px;
+.rb-alipayModal > div h2 {
+  text-align: center;
 }
-
-/*div {
-	border: 1px dashed black;
-}*/

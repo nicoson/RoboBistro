@@ -1,6 +1,8 @@
 // 配置 API Key 和 App ID
 // 从 Ping++ 管理平台应用信息里获取
-var API_KEY = "sk_test_fTa5yHSyDiHGzPiDC858G040" // 这里填入你的 Test/Live Key
+//var API_KEY = "sk_test_fTa5yHSyDiHGzPiDC858G040" // Test Key
+var API_KEY = "sk_live_SyPifP4Ou1OK4qXjb18mLyj9" // Live Key
+
 var APP_ID = "app_jHyX5CiXj5yHO4aP" // 这里填入你的应用 ID
 
 var pingpp = require('pingpp')(API_KEY);

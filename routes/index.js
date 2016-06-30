@@ -15,6 +15,10 @@ router.get('/takeorder', function(req, res, next) {
 	res.render('takeorder', { title: 'Express' });
 });
 
+router.get('/payfinish', function(req, res, next) {
+	res.render('payfinish', { title: 'Express' });
+});
+
 router.post('/alipayOrderCreate', function(req, res, next) {
 	prepayrequest.prePayCreate(req.body.amount, function(data, err){
 		res.send(data);

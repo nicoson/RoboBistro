@@ -9,11 +9,15 @@
 	<title>RoboBistro homepage</title>
 
 	<!-- Include the CSS -->
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
+	<!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
-	<div class="container">
+<!-- 	<div id="rb_start" class="b-alignment-middle container">
+		<p>开启新生活</p>
+	</div> -->
+
+<!-- 	<div class="container">
 		<h1 class="P1_title">Ping++ Alipay test</h1>
 
 		<div class="container">
@@ -23,8 +27,46 @@
 		</div>
 
 		<div id="rb_qrCode"></div>
+	</div> -->
+
+	<h1>BlueRobo 给你带来创新新生活!</h1>
+
+	<div class="container">
+		<table id="rb_productList">
+			<tr>
+				<th>Products</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+			<tr>
+				<td>
+					<img src="/images/foods/popcorn.jpg">
+				</td>
+				<td>0.01</td>
+				<td><button class="rb-js-addbtn">add</button></td>
+			</tr>
+			<tr>
+				<td>
+					<img src="/images/foods/drink.jpg">
+				</td>
+				<td>0.01</td>
+				<td><button class="rb-js-addbtn">add</button></td>
+			</tr>
+		</table>
+
+		<div id="rb_amountSum">
+			<p>total price: <span>0</span></p>
+		</div>
+
+		<button id="rb_submitOrder" class="rb_submit">提交支付</button>
 	</div>
 	
+	<div class="rb-alipayModal">
+		<div>
+			<h2>请使用支付宝扫描以下二维码进行支付</h2>
+			<div id="rb_qrCode"></div>
+		</div>
+	</div>
 
 	<!-- Include jQuery (required) and the JS -->
 	<script src="/javascripts/jquery-2.2.1.min.js"></script>
@@ -32,16 +74,19 @@
 	<script src="/javascripts/qrcode.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#submitOrder").on("click", function(){
+			var totalAmount = 0;
+
+			$("#rb_submitOrder").on("click", function(){
 				$.ajax({
 					url: "/alipayOrderCreate",
 					method: "POST",
 					data: {
-						amount: $("#amount").val()*100
+						amount: Number($("#rb_amountSum span").html())*100
 					}
 				}).done(function(data){
 					console.log(data);
 					$("#rb_qrCode").qrcode({width: 200,height: 200, text: data.credential.alipay_qr});
+					$(".rb-alipayModal").show();
 					setTimeout(function(){alipayOrderQuery(data.id)}, 3000);
 				});
 			});
@@ -56,11 +101,27 @@
 				}).done(function(data){
 					console.log(data);
 					if(data.paid){
-						alert("paid success!");
+						location.href = "payfinish";
 					}else{
 						setTimeout(function(){return alipayOrderQuery(id);}, 1000);
 					}
 				});
+			}
+
+			$(".rb-js-addbtn").on("click", function(e){
+				totalAmount = Number(Number(totalAmount) + Number($(e.currentTarget).parents("td").siblings().eq(1).html())).toFixed(2);
+				$("#rb_amountSum span").html(totalAmount);
+			});
+
+			modalInit(".rb-alipayModal>div");
+
+			function modalInit(selector){
+				var outerWidth = document.body.clientWidth;
+				var outerHeight = document.body.clientHeight;
+				var innerWidth = $(selector).outerWidth();
+				var innerHeight = $(selector).outerHeight();
+				$(selector).css("top", (outerHeight-innerHeight)/2+"px");
+				$(selector).css("left", (outerWidth-innerWidth)/2)+"px";
 			}
 		});
 	</script>
