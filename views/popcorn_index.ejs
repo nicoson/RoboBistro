@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>d3 test</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/popcorn.css">
+
+	<script src="/javascripts/jquery-2.2.1.min.js"></script>
+	<script src="/javascripts/d3.min.js"></script>
+	<script src="/javascripts/jquery.qrcode.min.js"></script>
+	<script src="/javascripts/qrcode.js"></script>
+	<script type="text/javascript" src="/javascripts/popcorn.js"></script>
+</head>
+<body>
+	<section>
+		<div id="pay_page">
+			<div id="popcorn_detail">
+				<table>
+					<tr>
+						<td colspan="2">订单详情</td>
+					</tr>
+					<tr>
+						<td>口味:</td>
+						<td>xxxxx</td>
+					</tr>
+					<tr>
+						<td>数量:</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>合计金额:</td>
+						<td>xxxxx</td>
+					</tr>
+				</table>
+				<h5>
+					请扫描屏幕下方二维码完成支付，取消请选择返回
+				</h5>
+			</div>
+
+			<div id="qrcode_container">
+				<div>
+					<h3>支付宝</h3>
+					<div class="rb_qrCode"></div>
+				</div>
+				<div>
+					<h3>微信支付</h3>
+					<div class="rb_qrCode"></div>
+				</div>
+			</div>
+
+			<a id="get_back" href="d3test.html">
+				重新选择
+			</a>
+		</div>
+	</section>
+
+</body>
+</html>

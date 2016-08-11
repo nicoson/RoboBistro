@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pay order</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		html, body, section {
+			background: black;
+			width: 100%;
+			height: 100%;
+			color: white;
+			position: relative;
+		}
+
+		#popcorn_detail {
+			width: 500px;
+			margin: 0 auto;
+			background-color: rgba(0, 127, 127, 0.2);
+			border: 1px solid rgba(127,255,255,0.25);
+			padding: 30px 0;
+			position: relative;
+			top: 10%;
+			display: none;
+		}
+
+		#popcorn_detail table {
+			width: 100%;
+		}
+
+		#popcorn_detail table tr td {
+			text-align: center;
+			width: 50%;
+		}
+
+		#popcorn_detail h5 {
+			text-align: center;
+			padding-top: 30px;
+			animation: text-twinkling 1.5s infinite;
+		}
+
+		@keyframes text-twinkling {
+			0% {color: #333;}
+			50% {color: #fff;}
+			100% {color: #333;}
+		}
+
+
+		#qrcode_container {
+			position: relative;
+			margin: 0 auto;
+			top: 20%;
+			width: 600px;
+		}
+
+		#qrcode_container div:first-child {
+			float: left;
+		}
+
+		#qrcode_container div:last-child {
+			float: right;
+		}
+		
+		#qrcode_container h3 {
+			text-align: center;
+			padding-bottom: 10px;
+		}
+
+		#get_back {
+			position: relative;
+			display: block;
+			top: 60%;
+			margin: 0 auto;
+			text-align: center;
+			text-decoration: none;
+			width: 80px;
+			padding: 20px 30px;
+			border: 1px solid rgba(250,123,110,0.8);
+			background-color: rgba(250,123,110,0.3);
+			color: white;
+			border-radius: 10px;
+		}
+	</style>
+	<script src="/javascripts/jquery-2.2.1.min.js"></script>
+</head>
+<body>
+	<section>
+		<div id="popcorn_detail">
+			<table>
+				<tr>
+					<td colspan="2">订单详情</td>
+				</tr>
+				<tr>
+					<td>口味:</td>
+					<td>xxxxx</td>
+				</tr>
+				<tr>
+					<td>数量:</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>合计金额:</td>
+					<td>xxxxx</td>
+				</tr>
+			</table>
+			<h5>
+				请扫描屏幕下方二维码完成支付，取消请选择返回
+			</h5>
+		</div>
+
+		<div id="qrcode_container">
+			<div>
+				<h3>支付宝</h3>
+				<img src="res/qrcode.jpg" alt="alipay">
+			</div>
+			<div>
+				<h3>微信支付</h3>
+				<img src="res/qrcode.jpg" alt="wechat">
+			</div>
+		</div>
+
+		<a id="get_back" href="d3test.html">
+			重新选择
+		</a>
+	</section>
+
+	<script>
+		$(document).ready(function(){
+			var jumpTrigger = false;
+
+			$("#popcorn_detail").slideDown(1000);
+
+			$("#get_back").on("mouseover", function(){
+				jumpTrigger = true;
+				setTimeout(function(){
+					if(jumpTrigger) {
+						location.href = "/";
+					}
+				}, 600);
+			});
+
+			$("#get_back").on("mouseout", function(){
+				jumpTrigger = false;
+			});
+		});
+	</script>
+</body>
+</html>

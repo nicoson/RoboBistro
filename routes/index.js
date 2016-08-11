@@ -3,9 +3,22 @@ var router = express.Router();
 var prepayrequest = require('../models/prepayrequest');
 
 /* GET home page. */
+// router.get('/', function(req, res, next) {
+// 	res.render('index', { title: 'Express' });
+// });
+
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Express' });
+	res.render('popcorn_index', { title: 'Express' });
 });
+
+// router.get('/payorder', function(req, res, next) {
+// 	res.render('popcorn_pay', { title: 'Express' });
+// });
+
+// router.post('/payorder', function(req, res, next) {
+// 	console.log(req.body.favor + "  " + req.body.amount);
+// 	res.send("success");
+// });
 
 router.get('/menu', function(req, res, next) {
 	res.render('menu', { title: 'Express' });
