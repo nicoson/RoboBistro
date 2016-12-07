@@ -59,6 +59,41 @@ $(document).ready(function(){
 	$("#get_back").on("mouseout", function(){
 		jumpTrigger = false;
 	});
+
+
+
+	//==============================\\
+	// leap motion controller
+	//==============================\\
+	var mousePoint = $("#mouse");
+	var screenX = document.body.clientWidth - mousePoint.width();
+	var	screenY = document.body.clientHeight - mousePoint.height();
+	//var displayArea = canvasElement.getContext("2d");
+
+	var controller = new Leap.Controller();
+	controller.on("frame", function(frame){
+	    if(frame.pointables.length > 0)
+	    {
+	        // canvasElement.width = screenX; //clear
+	        // canvasElement.height = screenY; //clear
+	        
+	        //Get a pointable and normalize the tip position
+	        var pointable = frame.pointables[0];
+	        var interactionBox = frame.interactionBox;
+	        var normalizedPosition = interactionBox.normalizePoint(pointable.tipPosition, true);
+	        
+	        // Convert the normalized coordinates to span the canvas
+	        var posX = screenX * normalizedPosition[0];
+	        var posY = screenY * normalizedPosition[2];
+	        //var posY = screenY * (1 - normalizedPosition[1]);
+	        //we can ignore z for a 2D context
+
+	        mousePoint.offset({top: posY, left: posX});
+	        
+	        //displayArea.strokeText("(" + canvasX.toFixed(1) + ", " + canvasY.toFixed(1) + ")", canvasX, canvasY);
+	    }
+	});
+	controller.connect();
 });
 
 function hexagon(parentObj, center, nodeNum, item) {
@@ -282,3 +317,4 @@ function alipayOrderQuery(id){
 		}
 	});
 }
+
